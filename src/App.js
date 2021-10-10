@@ -5,10 +5,10 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 
-const truncate = (input, len) =>
-  input.length > len ? `${input.substring(0, len)}...` : input;
+const truncate=(input, len) =>
+  input.length>len? `${input.substring(0, len)}...`:input;
 
-export const StyledButton = styled.button`
+export const StyledButton=styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
@@ -28,7 +28,7 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledRoundButton = styled.button`
+export const StyledRoundButton=styled.button`
   padding: 10px;
   border-radius: 100%;
   border: none;
@@ -53,7 +53,7 @@ export const StyledRoundButton = styled.button`
   }
 `;
 
-export const ResponsiveWrapper = styled.div`
+export const ResponsiveWrapper=styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -65,7 +65,7 @@ export const ResponsiveWrapper = styled.div`
   }
 `;
 
-export const StyledLogo = styled.img`
+export const StyledLogo=styled.img`
   width: 200px;
   @media (min-width: 767px) {
     width: 300px;
@@ -74,7 +74,7 @@ export const StyledLogo = styled.img`
   transition: height 0.5s;
 `;
 
-export const StyledImg = styled.img`
+export const StyledImg=styled.img`
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
   border: 4px dashed var(--secondary);
   background-color: var(--accent);
@@ -89,19 +89,19 @@ export const StyledImg = styled.img`
   transition: width 0.5s;
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink=styled.a`
   color: var(--secondary);
   text-decoration: none;
 `;
 
 function App() {
-  const dispatch = useDispatch();
-  const blockchain = useSelector((state) => state.blockchain);
-  const data = useSelector((state) => state.data);
-  const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
-  const [mintAmount, setMintAmount] = useState(1);
-  const [CONFIG, SET_CONFIG] = useState({
+  const dispatch=useDispatch();
+  const blockchain=useSelector((state) => state.blockchain);
+  const data=useSelector((state) => state.data);
+  const [claimingNft, setClaimingNft]=useState(false);
+  const [feedback, setFeedback]=useState(`Click buy to mint your NFT.`);
+  const [mintAmount, setMintAmount]=useState(1);
+  const [CONFIG, SET_CONFIG]=useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
     NETWORK: {
@@ -120,17 +120,17 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  const claimNFTs = () => {
-    let cost = CONFIG.WEI_COST;
-    let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit * mintAmount);
+  const claimNFTs=() => {
+    let cost=CONFIG.WEI_COST;
+    let gasLimit=CONFIG.GAS_LIMIT;
+    let totalCostWei=String(cost*mintAmount);
+    let totalGasLimit=String(gasLimit*mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(mintAmount)
+      .mint(blockchain.account, mintAmount)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -152,36 +152,36 @@ function App() {
       });
   };
 
-  const decrementMintAmount = () => {
-    let newMintAmount = mintAmount - 1;
-    if (newMintAmount < 1) {
-      newMintAmount = 1;
+  const decrementMintAmount=() => {
+    let newMintAmount=mintAmount-1;
+    if (newMintAmount<1) {
+      newMintAmount=1;
     }
     setMintAmount(newMintAmount);
   };
 
-  const incrementMintAmount = () => {
-    let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 10) {
-      newMintAmount = 10;
+  const incrementMintAmount=() => {
+    let newMintAmount=mintAmount+1;
+    if (newMintAmount>10) {
+      newMintAmount=10;
     }
     setMintAmount(newMintAmount);
   };
 
-  const getData = () => {
-    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+  const getData=() => {
+    if (blockchain.account!==""&&blockchain.smartContract!==null) {
       dispatch(fetchData(blockchain.account));
     }
   };
 
-  const getConfig = async () => {
-    const configResponse = await fetch("/config/config.json", {
+  const getConfig=async () => {
+    const configResponse=await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
-    const config = await configResponse.json();
+    const config=await configResponse.json();
     SET_CONFIG(config);
   };
 
@@ -199,7 +199,7 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
+        image={CONFIG.SHOW_BACKGROUND? "/config/images/bg.png":null}
       >
         <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
         <s.SpacerSmall />
@@ -241,7 +241,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+            {Number(data.totalSupply)>=CONFIG.MAX_SUPPLY? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -258,7 +258,7 @@ function App() {
                   {CONFIG.MARKETPLACE}
                 </StyledLink>
               </>
-            ) : (
+            ):(
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -273,8 +273,8 @@ function App() {
                   Excluding gas fees.
                 </s.TextDescription>
                 <s.SpacerSmall />
-                {blockchain.account === "" ||
-                blockchain.smartContract === null ? (
+                {blockchain.account===""||
+                  blockchain.smartContract===null? (
                   <s.Container ai={"center"} jc={"center"}>
                     <s.TextDescription
                       style={{
@@ -294,7 +294,7 @@ function App() {
                     >
                       CONNECT
                     </StyledButton>
-                    {blockchain.errorMsg !== "" ? (
+                    {blockchain.errorMsg!==""? (
                       <>
                         <s.SpacerSmall />
                         <s.TextDescription
@@ -306,9 +306,9 @@ function App() {
                           {blockchain.errorMsg}
                         </s.TextDescription>
                       </>
-                    ) : null}
+                    ):null}
                   </s.Container>
-                ) : (
+                ):(
                   <>
                     <s.TextDescription
                       style={{
@@ -322,7 +322,7 @@ function App() {
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
-                        disabled={claimingNft ? 1 : 0}
+                        disabled={claimingNft? 1:0}
                         onClick={(e) => {
                           e.preventDefault();
                           decrementMintAmount();
@@ -341,7 +341,7 @@ function App() {
                       </s.TextDescription>
                       <s.SpacerMedium />
                       <StyledRoundButton
-                        disabled={claimingNft ? 1 : 0}
+                        disabled={claimingNft? 1:0}
                         onClick={(e) => {
                           e.preventDefault();
                           incrementMintAmount();
@@ -353,14 +353,14 @@ function App() {
                     <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
-                        disabled={claimingNft ? 1 : 0}
+                        disabled={claimingNft? 1:0}
                         onClick={(e) => {
                           e.preventDefault();
                           claimNFTs();
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft? "BUSY":"BUY"}
                       </StyledButton>
                     </s.Container>
                   </>
