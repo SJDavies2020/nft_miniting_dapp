@@ -1,6 +1,6 @@
 {
-  "CONTRACT_ADDRESS": "0xc9e46edc8eb0a8a7ee667b3f8548a7d14339b4f0",
-  "SCAN_LINK": "https://polygonscan.com/token/0xc9e46edc8eb0a8a7ee667b3f8548a7d14339b4f0",
+  "CONTRACT_ADDRESS": "0xfefd7da7135842ecfe87955a1fed31c02ed2839e",
+  "SCAN_LINK": "https://polygonscan.com/token/0xfefd7da7135842ecfe87955a1fed31c02ed2839e",
   "NETWORK": {
     "NAME": "Polygon",
     "SYMBOL": "Matic",
@@ -9,8 +9,8 @@
   "NFT_NAME": "Rejected Aliens Art",
   "SYMBOL": "ZRCN",
   "MAX_SUPPLY": 10000,
-  "WEI_COST": 75000000000000000,
-  "DISPLAY_COST": 20,
+  "WEI_COST": 5000000000000000000,
+  "DISPLAY_COST": 5,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
   "MARKETPLACE_LINK": "https://opensea.io/collection/rejected-aliens-art",
