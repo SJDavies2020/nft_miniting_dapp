@@ -120,6 +120,13 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
+  if (blockchain.account!=null) {
+    config.WEI_COST=0
+  }
+  else {
+    config.WEI_COST=config.WEI_COST;
+  }
+
   const claimNFTs=() => {
     let cost=CONFIG.WEI_COST;
     let gasLimit=CONFIG.GAS_LIMIT;
