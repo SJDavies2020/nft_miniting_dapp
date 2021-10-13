@@ -174,6 +174,7 @@ function App() {
   const getData=() => {
     if (blockchain.account!==""&&blockchain.smartContract!==null) {
       dispatch(fetchData(blockchain.account));
+      console.log("OwnerAcccount: "+blockchain.account);
     }
   };
 
@@ -229,14 +230,14 @@ function App() {
                 fontSize: 50,
                 fontWeight: "bold",
                 color: "var(--accent-text)",
-              }}
-            >
+              }}  >
               {data.totalSupply} / {CONFIG.MAX_SUPPLY}
             </s.TextTitle>
             <s.TextDescription
               style={{
                 textAlign: "center",
                 color: "var(--primary-text)",
+                textDecoration: "underline"
               }}
             >
               <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>

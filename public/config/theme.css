@@ -6,3 +6,10 @@
   --accent: #505050;
   --accent-text: #ffffff;
 }
+
+#title
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  .... Etc
+}
