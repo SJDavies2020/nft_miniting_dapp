@@ -120,7 +120,10 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  if (blockchain.account!=null) {
+  getData();
+  if (blockchain.account!==""&&blockchain.smartContract!==null) {
+    dispatch(fetchData(blockchain.account));
+    console.log("OwnerAcccount: "+blockchain.account);
     config.WEI_COST=0
   }
   else {
