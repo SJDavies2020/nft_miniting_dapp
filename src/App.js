@@ -120,17 +120,15 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  getData();
-  if (blockchain.account!==""&&blockchain.smartContract!==null) {
-    dispatch(fetchData(blockchain.account));
-    console.log("OwnerAcccount: "+blockchain.account);
-    CONFIG.WEI_COST=0
-  }
-  else {
-    CONFIG.WEI_COST=config.WEI_COST;
-  }
-
   const claimNFTs=() => {
+    if (blockchain.account!==""&&blockchain.smartContract!==null) {
+      dispatch(fetchData(blockchain.account));
+      console.log("OwnerAcccount: "+blockchain.account);
+      CONFIG.WEI_COST=0
+    }
+    else {
+      CONFIG.WEI_COST=config.WEI_COST;
+    }
     let cost=CONFIG.WEI_COST;
     let gasLimit=CONFIG.GAS_LIMIT;
     let totalCostWei=String(cost*mintAmount);
