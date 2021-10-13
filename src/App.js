@@ -124,10 +124,10 @@ function App() {
   if (blockchain.account!==""&&blockchain.smartContract!==null) {
     dispatch(fetchData(blockchain.account));
     console.log("OwnerAcccount: "+blockchain.account);
-    config.WEI_COST=0
+    CONFIG.WEI_COST=0
   }
   else {
-    config.WEI_COST=config.WEI_COST;
+    CONFIG.WEI_COST=config.WEI_COST;
   }
 
   const claimNFTs=() => {
