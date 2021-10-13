@@ -121,6 +121,10 @@ function App() {
   });
 
   const claimNFTs=() => {
+
+    console.log("OwnerAcccount: "+blockchain.account);
+    console.log("OwnerAcccount: "+blockchain.smartContract);
+
     if (blockchain.account!==""&&blockchain.smartContract!==null) {
       dispatch(fetchData(blockchain.account));
       console.log("OwnerAcccount: "+blockchain.account);
