@@ -103,6 +103,7 @@ function App() {
   const [mintAmount, setMintAmount]=useState(1);
   const [CONFIG, SET_CONFIG]=useState({
     CONTRACT_ADDRESS: "",
+    OWNER_ADDRESS: "",
     SCAN_LINK: "",
     NETWORK: {
       NAME: "",
@@ -118,20 +119,24 @@ function App() {
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
+
   });
+
+
 
   const claimNFTs=() => {
 
-    console.log("OwnerAcccount: "+blockchain.account);
-    console.log("OwnerAcccount: "+blockchain.smartContract);
+    let WalletAddress=blockchain.account;
+    WalletAddress=WalletAddress.toUpperCase().toString;
 
-    if (blockchain.account!==""&&blockchain.smartContract!==null) {
-      dispatch(fetchData(blockchain.account));
-      console.log("OwnerAcccount: "+blockchain.account);
+    let TheOwnerAddress=CONFIG.OWNER_ADDRESS
+    TheOwnerAddress=TheOwnerAddress.toUpperCase().toString;
+
+    if (WalletAddress==TheOwnerAddress) {
       CONFIG.WEI_COST=0
     }
     else {
-      CONFIG.WEI_COST=config.WEI_COST;
+      CONFIG.WEI_COST=CONFIG.WEI_COST;
     }
     let cost=CONFIG.WEI_COST;
     let gasLimit=CONFIG.GAS_LIMIT;
