@@ -122,15 +122,13 @@ function App() {
 
   });
 
-
-
   const claimNFTs=() => {
 
     let WalletAddress=blockchain.account;
-    WalletAddress=WalletAddress.toUpperCase().toString;
+    WalletAddress=WalletAddress.toUpperCase();
 
     let TheOwnerAddress=CONFIG.OWNER_ADDRESS
-    TheOwnerAddress=TheOwnerAddress.toUpperCase().toString;
+    TheOwnerAddress=TheOwnerAddress.toUpperCase();
 
     if (WalletAddress==TheOwnerAddress) {
       CONFIG.WEI_COST=0
